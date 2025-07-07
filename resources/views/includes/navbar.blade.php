@@ -61,10 +61,13 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Log Out</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout-proc') }}" class="mb-0">
+                            @csrf
+                            <button type="submit" class="dropdown-item" id="logout-btn">
+                                <i class="bx bx-log-in me-2"></i>
+                                <span class="align-middle">Logout</span>
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </li>

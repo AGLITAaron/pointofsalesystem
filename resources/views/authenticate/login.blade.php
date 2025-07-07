@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <span class="app-brand-text text-body fw-bolder ">Poin Of Sale System</span>
+                        <span class="app-brand-text text-body fw-bolder ">Business Operations Management System</span>
                     </div>
                     <!-- /Logo -->
                     {{-- <h4 class="mb-2">Welcome to Sneat! 👋</h4>

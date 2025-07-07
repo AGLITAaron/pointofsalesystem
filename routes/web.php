@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Setup\SetupController;
 use App\Http\Controllers\Authenticate\LoginController;
+use App\Http\Controllers\Modules\Customers\CustomersContoller;
 use App\Http\Controllers\Modules\Products\ProductController;
 use App\Http\Controllers\Modules\Dashboard\DashboardController;
+use App\Http\Controllers\Modules\Employees\EmployeesController;
 use App\Http\Controllers\Modules\Products\ProductBrandController;
 use App\Http\Controllers\Modules\Products\ProductCategoryController;
 use App\Http\Controllers\Modules\UserAccounts\UserAccountsController;
@@ -37,6 +39,12 @@ Route::post('/forgot-password-proc', [LoginController::class, 'resetPassword'])-
 Route::middleware(['auth', 'preventBackHistory'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/logout-proc', [LoginController::class, 'logout'])->name('logout-proc');
+
+
+
+    Route::get('/employees', [EmployeesController::class, 'index'])->name('employees');
+    Route::get('/customers', [CustomersContoller::class, 'index'])->name('customers');
 
     Route::prefix('user/')->group(
         function () {

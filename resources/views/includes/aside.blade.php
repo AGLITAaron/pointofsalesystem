@@ -61,63 +61,56 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <!-- Layouts -->
-        {{-- <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-calculator"></i>
-                <div data-i18n="Account Settings">Add Income/Sales</div>
+        <li class="menu-item">
+            <a href="{{ route('employees') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Tables">Employees</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        <div data-i18n="Account">Create Income/Sales</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        <div data-i18n="Connections">Savings Account</div>
-                    </a>
-                </li>
-            </ul>
-        </li> --}}
+        </li>
 
+        <li class="menu-item">
+            <a href="{{ route('customers') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-group"></i>
+                <div data-i18n="Tables">Customers</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <div data-i18n="Tables">Transactions</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-trending-up"></i>
+                <div data-i18n="Tables">Expenditure</div>
+            </a>
+        </li>
+        <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-copy-alt"></i>
-                <div data-i18n="Account Settings">Items/Products List</div>
+                <div data-i18n="Account Settings">Reports</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('products.list') }}" class="menu-link">
+                    <a href="#" class="menu-link">
                         <div data-i18n="Account">Products</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('product-category') }}" class="menu-link">
+                    <a href="#" class="menu-link">
                         <div data-i18n="Connections">Product Category</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('product-brand') }}" class="menu-link">
+                    <a href="#" class="menu-link">
                         <div data-i18n="Connections">Product Brands</div>
                     </a>
                 </li>
             </ul>
         </li>
 
-        {{-- <li class="menu-item">
-            <a href="{{ route('products.list') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-copy-alt"></i>
-                <div data-i18n="Tables">Items/Products List</div>
-            </a>
-        </li> --}}
-
-        {{-- <li class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cart"></i>
-                <div data-i18n="Tables">Purchases</div>
-            </a>
-        </li> --}}
 
         <li class="menu-item">
             <a href="{{ route('users') }}" class="menu-link">
@@ -132,16 +125,18 @@
 
         <li class="menu-item">
             <a href="{{ route('user-roles') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-ruler"></i>
-                <div data-i18n="Tables">Product Units</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('user-roles') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Tables">Users Role</div>
+                <div data-i18n="Tables">Users Role & Access</div>
             </a>
         </li>
+
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Tables">System Configurations</div>
+            </a>
+        </li>
+
         {{-- <li class="menu-item">
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-key"></i>

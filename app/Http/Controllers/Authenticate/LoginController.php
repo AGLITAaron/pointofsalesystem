@@ -122,4 +122,15 @@ class LoginController extends Controller
 
         return response()->json($registerUser);
     }
+
+    public function logout(Request $request)
+    {
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+    }
 }

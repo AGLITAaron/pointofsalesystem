@@ -41,19 +41,18 @@
                     <div class="row mb-3">
                         <div class="col-lg-12">
                             <div class="card p-3">
-                                <div class="d-flex justify-content-between align-items-center text-base">Dashboard
+                                <div class="d-flex justify-content-between align-items-center text-xl">Dashboard
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-xl-3 mb-6">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <p class="mb-1">Total Profit</p>
-                                    <h4 class="card-title mb-3">$4,679</h4>
-                                    {{-- <small class="text-success fw-medium"><i class="icon-base bx bx-up-arrow-alt"></i>
-                                            +28.42%</small> --}}
+                                    <p class="mb-1 text-lg">Registered Employee</p>
+                                    <h4 class="card-title mb-3 text-xl">0</h4>
                                 </div>
                             </div>
                         </div>
@@ -61,12 +60,8 @@
                         <div class="col-xl-3 mb-6">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <p class="mb-1">Total Company Deductions</p>
-                                    <h4 class="card-title mb-3">₱
-
-                                    </h4>
-                                    {{-- <small class="text-success fw-medium"><i class="icon-base bx bx-up-arrow-alt"></i>
-                                            +28.42%</small> --}}
+                                    <p class="mb-1 text-lg">Customers</p>
+                                    <h4 class="card-title mb-3 text-xl">0</h4>
                                 </div>
                             </div>
                         </div>
@@ -74,12 +69,10 @@
                         <div class="col-xl-3 mb-6">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <p class="mb-1">Total Expenses</p>
-                                    <h4 class="card-title mb-3">₱
+                                    <p class="mb-1 text-lg">Total Transaction</p>
+                                    <h4 class="card-title mb-3 text-xl">0
                                         {{-- {{ number_format($totalExpense->TotalExpense, 2) ? number_format($totalExpense->TotalExpense, 2) : 0 }} --}}
                                     </h4>
-                                    {{-- <small class="text-success fw-medium"><i class="icon-base bx bx-up-arrow-alt"></i>
-                                            +28.42%</small> --}}
                                 </div>
                             </div>
                         </div>
@@ -87,17 +80,47 @@
                         <div class="col-xl-3 mb-6">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <p class="mb-1">Total Savings</p>
-                                    <h4 class="card-title mb-3">₱
+                                    <p class="mb-1 text-lg">Pending Transaction</p>
+                                    <h4 class="card-title mb-3 text-xl">0
                                         {{-- {{ number_format($totalSavings->TotalAmount) ? number_format($totalSavings->TotalAmount) : 0 }} --}}
                                     </h4>
-                                    {{-- <small class="text-success fw-medium"><i class="icon-base bx bx-up-arrow-alt"></i>
-                                            +28.42%</small> --}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 mb-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <p class="mb-1 text-lg">Income (This Year)</p>
+                                    <h4 class="card-title mb-3 text-xl">0
+                                        {{-- {{ number_format($totalSavings->TotalAmount) ? number_format($totalSavings->TotalAmount) : 0 }} --}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 mb-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <p class="mb-1 text-lg">Expenditure (This Year)</p>
+                                    <h4 class="card-title mb-3 text-xl">0
+                                        {{-- {{ number_format($totalSavings->TotalAmount) ? number_format($totalSavings->TotalAmount) : 0 }} --}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 mb-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <p class="mb-1 text-lg">Profit (This Year)</p>
+                                    <h4 class="card-title mb-3 text-xl">0
+                                        {{-- {{ number_format($totalSavings->TotalAmount) ? number_format($totalSavings->TotalAmount) : 0 }} --}}
+                                    </h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- @endif --}}
                 </div>
             </div>
         </div>
