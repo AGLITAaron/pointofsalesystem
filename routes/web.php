@@ -44,7 +44,15 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
 
 
     Route::get('/employees', [EmployeesController::class, 'index'])->name('employees');
-    Route::get('/customers', [CustomersContoller::class, 'index'])->name('customers');
+
+    Route::prefix('customers/')->group(
+        function () {
+            Route::get('/', [CustomersContoller::class, 'index'])->name('customers');
+            Route::post('/add-customers', [CustomersContoller::class, 'addCustomer'])->name('add-customer-proc');
+            Route::get('/edit-customers/{id}', [CustomersContoller::class, 'editCustomer'])->name('edit-customer');
+        }
+    );
+
 
     Route::prefix('user/')->group(
         function () {
