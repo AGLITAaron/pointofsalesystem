@@ -42,14 +42,14 @@ class SpEmployees extends Migration
                                 AND `Province` COLLATE utf8mb4_unicode_ci = xProvince COLLATE utf8mb4_unicode_ci
                                 AND `Municipality` COLLATE utf8mb4_unicode_ci= xMunicipality COLLATE utf8mb4_unicode_ci
                                 AND `Barangay` COLLATE utf8mb4_unicode_ci= xBarangay COLLATE utf8mb4_unicode_ci
-                                AND `CompleteAddress` COLLATE utf8mb4_unicode_ci= xCompleteAddress COLLATE utf8mb4_unicode_ci) THEN
+                                AND `CompleteAdddress` COLLATE utf8mb4_unicode_ci= xCompleteAddress COLLATE utf8mb4_unicode_ci) THEN
                                 
                             -- Error Handling
                             SELECT 'No change were made.' AS ErrorMessage;
                                     ELSE
                             -- Update query
                             UPDATE tblemployees SET  ContactNumber = xContactNumber, SalaryID = xSalary, GenderID = xGender
-                                        ,Province = xProvince, Municipality = xMunicipality, Barangay = xBarangay, CompleteAddress = xCompleteAddress
+                                        ,Province = xProvince, Municipality = xMunicipality, Barangay = xBarangay, CompleteAdddress = xCompleteAddress
                             WHERE EmployeeID  COLLATE utf8mb4_unicode_ci = xEmployeeID  COLLATE utf8mb4_unicode_ci;
                             
                             -- Error Handling
@@ -64,7 +64,7 @@ class SpEmployees extends Migration
                             SELECT 'The employee you entered already exists.' AS ErrorMessage;
                         ELSE
                             INSERT INTO tblemployees(`UserID`,`ContactNumber`,`SalaryID`,`GenderID`,`Province`,`Municipality`,`Barangay`,`CompleteAddress`, `DateHired`,`created_at`) 
-                            VALUES (xUserID,xContactNumber,xSalary, xGender, xProvince, xMunicipality, xBarangay,xCompleteAddress,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+                            VALUES (xUserID,xContactNumber,xSalary, xGender, xProvince, xMunicipality, xBarangay,xCompleteAdddress,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 
                             -- Error Handling
                             SELECT 'You have successfully added employee in the system.' AS SuccessMessage;

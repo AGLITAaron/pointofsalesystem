@@ -21,8 +21,11 @@
             <div class="col-6 mb-3">
                 <label for="nameSlideTop" class="form-label"><strong>Contact Number: <span
                             class="text-danger">*</span></strong></label>
-                <input type="text" id="contact-number" name="contact-number" class="form-control"
-                    placeholder="Enter contact number" autocomplete="off" />
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon11">+63</span>
+                    <input type="text" id="contact-number" name="contact-number" class="form-control"
+                        placeholder="Enter contact number" autocomplete="off" />
+                </div>
             </div>
             <div class="col-6 mb-3">
                 <label for="nameSlideTop" class="form-label"><strong>Gender: <span

@@ -62,14 +62,14 @@
 
             const formData = $(this).serialize(); // Get form data
 
-            doAddCustomer(formData);
+            doAddEmployee(formData);
 
         });
 
-        function doAddCustomer(formData) {
+        function doAddEmployee(formData) {
             $.ajax({
                 type: "POST",
-                url: "{{ route('add-customer-proc') }}",
+                url: "{{ route('add-employees-proc') }}",
                 data: formData,
                 dataType: "json",
                 success: function(res) {
@@ -89,5 +89,25 @@
                 }
             });
         }
+    });
+</script>
+
+
+
+
+<script>
+    const input = document.getElementById("contact-number");
+
+    input.addEventListener("input", function() {
+        // Remove non-digits
+        let value = this.value.replace(/\D/g, '');
+
+        // Enforce starting with 9
+        if (value && value[0] !== '9') {
+            value = '';
+        }
+
+        // Limit to 10 digits
+        this.value = value.slice(0, 10);
     });
 </script>

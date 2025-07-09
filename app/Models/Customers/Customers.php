@@ -52,7 +52,6 @@ class Customers extends Model
                 return ['status' => 'warning', 'message' => $resultSet->ErrorMessage];
             }
         }
-        return true;
     }
 
     function getLastName($fullName)

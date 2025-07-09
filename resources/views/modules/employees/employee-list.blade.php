@@ -54,20 +54,22 @@
                                     @if (count($employees) > 0)
                                         @foreach ($employees as $list)
                                             <tr>
-                                                <td class="text-xs text-center p-1">{{ $list->UserID }}
+                                                <td class="text-xs text-center p-1">
+                                                    {{ $list->Users->FName . ' ' . $list->Users->MName . ' ' . $list->Users->LName }}
                                                 <td class="text-xs text-center p-1">{{ $list->ContactNumber }}
-                                                <td class="text-xs text-center p-1">{{ $list->UserID }}
-                                                <td class="text-xs text-center p-1">{{ $list->GenderID }}
-                                                <td class="text-xs text-center p-1">{{ $list->SalaryID }}
+                                                <td class="text-xs text-center p-1">{{ $list->Users->Birthday }}
+                                                <td class="text-xs text-center p-1">{{ $list->Gender->Gender }}
+                                                <td class="text-xs text-center p-1">₱
+                                                    {{ number_format($list->Salary->Salary, 2) }}
                                                 <td class="text-center p-1 whitespace-nowrap">
-                                                    <button class="btn btn-outline-success p-1 role-edit-btn"
+                                                    <button class="btn btn-outline-success p-1 edit-employee-btn"
                                                         data-item-id="{{ $list->EmployeeID }}" data-bs-toggle="modal"
-                                                        data-bs-target="#edit-role-modal"><i class='bx bx-pencil'></i>
+                                                        data-bs-target="#edit-employee-modal"><i class='bx bx-pencil'></i>
                                                     </button>
 
-                                                    <button class="btn btn-outline-danger p-1 role-delete-btn"
+                                                    <button class="btn btn-outline-danger p-1 delete-employee-btn"
                                                         data-item-id="{{ $list->EmployeeID }}" data-bs-toggle="modal"
-                                                        data-bs-target="#delete-role-modal"><i class='bx bx-trash'></i>
+                                                        data-bs-target="#delete-employee-modal"><i class='bx bx-trash'></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -93,7 +95,6 @@
         </div>
     </div>
 
-
     {{-- add employee modal --}}
     <div class="modal fade" id="add-employee-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-content add-modal-content modal-xl">
@@ -102,15 +103,14 @@
     </div>
 
     {{-- edit employee modal --}}
-    <div class="modal fade" id="edit-role-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-content edit-modal-content modal-md">
+    <div class="modal fade" id="edit-employee-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-content edit-employee-content modal-xl">
 
         </div>
     </div>
 
-
     {{-- delete employee modal --}}
-    <div class="modal fade" id="delete-role-modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="delete-employee-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-content delete-modal-content modal-md">
 
         </div>

@@ -42,8 +42,12 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::post('/logout-proc', [LoginController::class, 'logout'])->name('logout-proc');
 
 
-
-    Route::get('/employees', [EmployeesController::class, 'index'])->name('employees');
+    Route::prefix('employeess/')->group(
+        function () {
+            Route::get('/', [EmployeesController::class, 'index'])->name('employees');
+            Route::post('/add-employees', [EmployeesController::class, 'addEmployees'])->name('add-employees-proc');
+        }
+    );
 
     Route::prefix('customers/')->group(
         function () {
