@@ -15,9 +15,8 @@ class employees extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'EmployeeName',
+        'UserID',
         'ContactNumber',
-        'Birthday',
         'GenderID',
         'SalaryID',
         'Province',
@@ -28,4 +27,11 @@ class employees extends Model
     ];
 
     public $incrementing = true;
+
+
+    public function doEmployee()
+    {
+
+        return true;
+    }
 }

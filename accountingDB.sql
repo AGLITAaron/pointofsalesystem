@@ -25,11 +25,11 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
-insert  into `migrations`(`id`,`migration`,`batch`) values (1,'2025_06_18_130354_create_user_models_table',1),(2,'2025_06_19_055038_create_user_contact_numbers_table',1),(3,'2025_06_30_052203_sp_accounts',1),(4,'2025_06_30_070523_create_products_table',1),(5,'2025_06_30_073445_create_user_roles_table',1),(6,'2025_07_01_051709_create_product_categories_table',1),(7,'2025_07_02_074907_create_product_brands_table',1),(8,'2025_07_04_071331_create_product_units_table',1),(9,'2025_07_04_073610_sp_product_brand',1),(10,'2025_07_04_073814_sp_product_category',1),(11,'2025_07_04_073931_sp_role',1),(12,'2025_07_07_063022_create_employees_table',2),(21,'2025_07_08_052754_sp_csutomers',3);
+insert  into `migrations`(`id`,`migration`,`batch`) values (1,'2025_06_18_130354_create_user_models_table',1),(2,'2025_06_19_055038_create_user_contact_numbers_table',1),(3,'2025_06_30_052203_sp_accounts',1),(4,'2025_06_30_070523_create_products_table',1),(5,'2025_06_30_073445_create_user_roles_table',1),(6,'2025_07_01_051709_create_product_categories_table',1),(7,'2025_07_02_074907_create_product_brands_table',1),(8,'2025_07_04_071331_create_product_units_table',1),(9,'2025_07_04_073610_sp_product_brand',1),(10,'2025_07_04_073814_sp_product_category',1),(11,'2025_07_04_073931_sp_role',1),(12,'2025_07_07_063022_create_employees_table',2),(22,'2025_07_09_060214_modify_employees',4),(24,'2025_07_09_061900_sp_employees',5),(21,'2025_07_08_052754_sp_csutomers',3),(25,'2025_07_09_064013_create_salaries_table',6);
 
 /*Table structure for table `tbl_product_brand` */
 
@@ -139,11 +139,11 @@ CREATE TABLE `tblcustomers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `tblcustomers` */
 
-insert  into `tblcustomers`(`CustomerID`,`CustomerNumber`,`CustomerName`,`GenderID`,`Province`,`Municipality`,`Barangay`,`CompleteAddress`,`RegistrationDate`,`BranchRegistered`,`CreatedBy`,`created_at`,`updated_at`) values (1,'TAL202507080001','Aaron Talens',1,'asdasd','asdasd','asdaad','sdasd','2025-07-08',0,0,'2025-07-08 14:28:01',NULL);
+insert  into `tblcustomers`(`CustomerID`,`CustomerNumber`,`CustomerName`,`GenderID`,`Province`,`Municipality`,`Barangay`,`CompleteAddress`,`RegistrationDate`,`BranchRegistered`,`CreatedBy`,`created_at`,`updated_at`) values (1,'TAL202507080001','Aaron Pichollo Mangahas Talens',1,'asdasd','asdasd','asdaad','sdasd','2025-07-08',0,0,'2025-07-08 14:28:01',NULL);
 
 /*Table structure for table `tblemployees` */
 
@@ -151,9 +151,8 @@ DROP TABLE IF EXISTS `tblemployees`;
 
 CREATE TABLE `tblemployees` (
   `EmployeeID` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `EmployeeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `UserID` int DEFAULT '0',
   `ContactNumber` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Birthday` date DEFAULT NULL,
   `SalaryID` int NOT NULL DEFAULT '0',
   `GenderID` int NOT NULL DEFAULT '0',
   `Province` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -183,6 +182,22 @@ CREATE TABLE `tblgender` (
 /*Data for the table `tblgender` */
 
 insert  into `tblgender`(`GenderID`,`Gender`,`created_at`,`updated_at`) values (1,'Male',NULL,NULL),(2,'Female',NULL,NULL);
+
+/*Table structure for table `tblsalary` */
+
+DROP TABLE IF EXISTS `tblsalary`;
+
+CREATE TABLE `tblsalary` (
+  `SalaryID` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `Salary` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`SalaryID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `tblsalary` */
+
+insert  into `tblsalary`(`SalaryID`,`Salary`,`created_at`,`updated_at`) values (1,'10000.00',NULL,NULL),(2,'15000.00',NULL,NULL),(3,'25000.00',NULL,NULL),(4,'18000.00',NULL,NULL),(5,'20000.00',NULL,NULL);
 
 /*Table structure for table `tbluser_accounts` */
 
@@ -286,14 +301,12 @@ BEGIN
                     ELSE
                         INSERT INTO tblcustomers(`CustomerNumber`,`CustomerName`,`GenderID`,`CompleteAddress`,`Province`,`Municipality`,`Barangay`,`RegistrationDate`, `created_at`) 
                         VALUES (xCustomerNumber,xCustomerName,xGender, xPermanentAddress, xProvince, xMunicipality, xBarangay, CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-
                         SELECT 'You have successfully register customer in the system.' AS SuccessMessage;
                     END IF;
-
                 ELSEIF  xAction = 'Update' THEN 
                     IF EXISTS (SELECT 1 FROM tblcustomers WHERE `CustomerName` COLLATE utf8mb4_unicode_ci = xCustomerName COLLATE utf8mb4_unicode_ci
-                     AND `GenderID` COLLATE utf8mb4_unicode_ci = xGenderID COLLATE utf8mb4_unicode_ci
-                     AND `CompleteAddress` COLLATE utf8mb4_unicode_ci = xCompleteAddress COLLATE utf8mb4_unicode_ci 
+                     AND `GenderID` COLLATE utf8mb4_unicode_ci = xGender COLLATE utf8mb4_unicode_ci
+                     AND `CompleteAddress` COLLATE utf8mb4_unicode_ci = xPermanentAddress COLLATE utf8mb4_unicode_ci 
                      AND `Province` COLLATE utf8mb4_unicode_ci = xProvince COLLATE utf8mb4_unicode_ci
                      AND `Municipality` COLLATE utf8mb4_unicode_ci= xMunicipality COLLATE utf8mb4_unicode_ci
                      AND `Barangay` COLLATE utf8mb4_unicode_ci= xBarangay COLLATE utf8mb4_unicode_ci) THEN
@@ -302,13 +315,73 @@ BEGIN
                         UPDATE tblcustomers SET CustomerName = xCustomerName, GenderID = xGender, CompleteAddress = xPermanentAddress
                                                 ,Province = xProvince, Municipality = xMunicipality, Barangay = xBarangay
                         WHERE CustomerID  COLLATE utf8mb4_unicode_ci = xCustomerID  COLLATE utf8mb4_unicode_ci;
-
                         SELECT 'You have successfully updated customer in the system.' AS SuccessMessage;
                     END IF;
                 ELSE
                     DELETE FROM tblcustomers WHERE CustomerID  COLLATE utf8mb4_unicode_ci = xCustomerID  COLLATE utf8mb4_unicode_ci;
+                    SELECT 'You have successfully deleted customer in the system.' AS SuccessMessage;
                 END IF;
             END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_employees` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_employees` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_employees`(
+                IN xEmployeeID INT,
+                IN xUserID INT, 
+                IN xContactNumber VARCHAR(255), 
+                IN xSalary INT, 
+                IN xGender INT, 
+                IN xProvince VARCHAR(255),
+                IN xMunicipality VARCHAR(255),
+                IN xBarangay VARCHAR(255),
+                IN xCompleteAddress VARCHAR(255),
+                IN xAction VARCHAR(150)
+            )
+BEGIN
+                    IF xAction = 'Update' THEN
+                    
+                            -- Check if the data is exists or have any changes
+                        IF EXISTS (SELECT 1 FROM tblemployees WHERE `UserID` COLLATE utf8mb4_unicode_ci = xUserID COLLATE utf8mb4_unicode_ci
+                                AND `ContactNumber` COLLATE utf8mb4_unicode_ci = xContactNumber COLLATE utf8mb4_unicode_ci
+                                AND `SalaryID` COLLATE utf8mb4_unicode_ci = xSalary COLLATE utf8mb4_unicode_ci 
+                                AND `GenderID` COLLATE utf8mb4_unicode_ci = xSalary COLLATE utf8mb4_unicode_ci 
+                                AND `Province` COLLATE utf8mb4_unicode_ci = xProvince COLLATE utf8mb4_unicode_ci
+                                AND `Municipality` COLLATE utf8mb4_unicode_ci= xMunicipality COLLATE utf8mb4_unicode_ci
+                                AND `Barangay` COLLATE utf8mb4_unicode_ci= xBarangay COLLATE utf8mb4_unicode_ci
+                                AND `CompleteAddress` COLLATE utf8mb4_unicode_ci= xCompleteAddress COLLATE utf8mb4_unicode_ci) THEN
+                                
+                            -- Error Handling
+                            SELECT 'No change were made.' AS ErrorMessage;
+                                    ELSE
+                            -- Update query
+                            UPDATE tblemployees SET  ContactNumber = xContactNumber, SalaryID = xSalary, GenderID = xGender
+                                        ,Province = xProvince, Municipality = xMunicipality, Barangay = xBarangay, CompleteAddress = xCompleteAddress
+                            WHERE EmployeeID  COLLATE utf8mb4_unicode_ci = xEmployeeID  COLLATE utf8mb4_unicode_ci;
+                            
+                            -- Error Handling
+                            SELECT 'You have successfully updated employee in the system.' AS SuccessMessage;
+                                END IF;
+                    
+                    ELSE  
+                        -- Check if already exists
+                        IF EXISTS (SELECT 1 FROM tblemployees WHERE `UserID` COLLATE utf8mb4_unicode_ci = xUserID COLLATE utf8mb4_unicode_ci) THEN
+                        
+                            -- Error Handling
+                            SELECT 'The employee you entered already exists.' AS ErrorMessage;
+                        ELSE
+                            INSERT INTO tblemployees(`UserID`,`ContactNumber`,`SalaryID`,`GenderID`,`Province`,`Municipality`,`Barangay`,`CompleteAddress`, `DateHired`,`created_at`) 
+                            VALUES (xUserID,xContactNumber,xSalary, xGender, xProvince, xMunicipality, xBarangay,xCompleteAddress,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+
+                            -- Error Handling
+                            SELECT 'You have successfully added employee in the system.' AS SuccessMessage;
+                        END IF;
+                    END IF;
+                END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `sp_product_brand` */

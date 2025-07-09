@@ -1,11 +1,13 @@
 <form method="POST" id="form-edit-customer">
     <div class="modal-header justify-content-center">
-        <h5 class="modal-title text-center" id="modalTopTitle"><i class="bx bx-user me-1"></i>Edit Customer Record
+        <h5 class="modal-title text-center" id="modalTopTitle"><i class="bx bx-user me-1"></i>Delete Customer Record
         </h5>
     </div>
     <div class="modal-body ">
         <div class="row">
             <div class="col-12 mb-3">
+                <input type="hidden" id="customer-id" name="customer-id" class="form-control"
+                    value="{{ $customers->CustomerID }}" />
                 <label for="nameSlideTop" class="form-label"><strong>Customer Name: <span
                             class="text-danger">*</span></strong></label>
                 <input type="text" id="customer-name" name="customer-name" class="form-control"
@@ -26,7 +28,6 @@
                     @endforeach
                 </select>
             </div>
-
         </div>
         <div class="row">
             <div class="col-12 mb-3">

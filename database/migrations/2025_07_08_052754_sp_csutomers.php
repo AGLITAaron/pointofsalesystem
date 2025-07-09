@@ -42,8 +42,8 @@ class SpCsutomers extends Migration
 
                 ELSEIF  xAction = 'Update' THEN 
                     IF EXISTS (SELECT 1 FROM tblcustomers WHERE `CustomerName` COLLATE utf8mb4_unicode_ci = xCustomerName COLLATE utf8mb4_unicode_ci
-                     AND `GenderID` COLLATE utf8mb4_unicode_ci = xGenderID COLLATE utf8mb4_unicode_ci
-                     AND `CompleteAddress` COLLATE utf8mb4_unicode_ci = xCompleteAddress COLLATE utf8mb4_unicode_ci 
+                     AND `GenderID` COLLATE utf8mb4_unicode_ci = xGender COLLATE utf8mb4_unicode_ci
+                     AND `CompleteAddress` COLLATE utf8mb4_unicode_ci = xPermanentAddress COLLATE utf8mb4_unicode_ci 
                      AND `Province` COLLATE utf8mb4_unicode_ci = xProvince COLLATE utf8mb4_unicode_ci
                      AND `Municipality` COLLATE utf8mb4_unicode_ci= xMunicipality COLLATE utf8mb4_unicode_ci
                      AND `Barangay` COLLATE utf8mb4_unicode_ci= xBarangay COLLATE utf8mb4_unicode_ci) THEN
@@ -57,6 +57,7 @@ class SpCsutomers extends Migration
                     END IF;
                 ELSE
                     DELETE FROM tblcustomers WHERE CustomerID  COLLATE utf8mb4_unicode_ci = xCustomerID  COLLATE utf8mb4_unicode_ci;
+                    SELECT 'You have successfully deleted customer in the system.' AS SuccessMessage;
                 END IF;
             END;
             ");

@@ -1,13 +1,13 @@
 @extends('app')
 @section('title', 'Customer List')
-<!-- Contents -->
+{{-- Content --}}
 @section('content')
-    <!-- Content -->
+    {{-- Content wrapper --}}
     <div class="content-wrapper">
-        <!-- Content -->
+        {{-- Container --}}
         <div class="container-fluid flex-grow-1 container-p-y">
             <div class="row">
-                {{-- {{ dd($user->toArray(), $user->profileCompletionPercent()) }} --}}
+                {{-- breadcrumbs --}}
                 <div class="col-12 mb-3">
                     <div class="row mb-3">
                         <div class="col-lg-12">
@@ -22,8 +22,9 @@
                         </div>
                     </div>
                 </div>
+                {{-- End of breadcrumbs --}}
             </div>
-
+            {{-- Customer data table --}}
             <div class="row">
                 <div class="col-xl-12 mb-6">
                     <div class="card h-100">
@@ -59,7 +60,7 @@
 
                                                     <button class="btn btn-outline-danger p-1 delete-customer-btn"
                                                         data-item-id="{{ $list->CustomerID }}" data-bs-toggle="modal"
-                                                        data-bs-target="#delete-income-modal"><i class='bx bx-trash'></i>
+                                                        data-bs-target="#delete-customer-modal"><i class='bx bx-trash'></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -83,8 +84,9 @@
                 </div>
             </div>
         </div>
+        {{-- End of Container --}}
     </div>
-
+    {{-- End of content wrapper --}}
 
     {{-- add modal --}}
     <div class="modal fade" id="add-customer-modal" tabindex="-1" role="dialog">
@@ -110,3 +112,4 @@
 
     @include('modules.customers.scripts.customer-scripts')
 @endsection
+{{-- End content --}}

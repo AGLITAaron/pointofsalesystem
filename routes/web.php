@@ -50,6 +50,9 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
             Route::get('/', [CustomersContoller::class, 'index'])->name('customers');
             Route::post('/add-customers', [CustomersContoller::class, 'addCustomer'])->name('add-customer-proc');
             Route::get('/edit-customers/{id}', [CustomersContoller::class, 'editCustomer'])->name('edit-customer');
+            Route::post('/edit-customers-proc', [CustomersContoller::class, 'editCustomerProc'])->name('edit-customers-proc');
+            Route::get('/delete-customers/{id}', [CustomersContoller::class, 'deleteCustomer'])->name('delete-customers');
+            Route::post('/delete-customers-proc', [CustomersContoller::class, 'deleteCustomerProc'])->name('delete-customers-proc');
         }
     );
 
