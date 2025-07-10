@@ -38,7 +38,7 @@ class SpEmployees extends Migration
                         IF EXISTS (SELECT 1 FROM tblemployees WHERE `UserID` COLLATE utf8mb4_unicode_ci = xUserID COLLATE utf8mb4_unicode_ci
                                 AND `ContactNumber` COLLATE utf8mb4_unicode_ci = xContactNumber COLLATE utf8mb4_unicode_ci
                                 AND `SalaryID` COLLATE utf8mb4_unicode_ci = xSalary COLLATE utf8mb4_unicode_ci 
-                                AND `GenderID` COLLATE utf8mb4_unicode_ci = xSalary COLLATE utf8mb4_unicode_ci 
+                                AND `GenderID` COLLATE utf8mb4_unicode_ci = xGender COLLATE utf8mb4_unicode_ci 
                                 AND `Province` COLLATE utf8mb4_unicode_ci = xProvince COLLATE utf8mb4_unicode_ci
                                 AND `Municipality` COLLATE utf8mb4_unicode_ci= xMunicipality COLLATE utf8mb4_unicode_ci
                                 AND `Barangay` COLLATE utf8mb4_unicode_ci= xBarangay COLLATE utf8mb4_unicode_ci

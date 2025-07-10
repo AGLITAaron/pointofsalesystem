@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductBrandsTable extends Migration
+class CreatePricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateProductBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_product_brand', function (Blueprint $table) {
-            $table->id('BrandID')->uniqid();
-            $table->string('Brand', 255)->nullable();
-            $table->integer('CreatedBy')->default(0);
-            $table->timestamps();
+        Schema::table('tblprice', function (Blueprint $table) {
+
+            $table->string('Weight', 200)->nullable()->after('PriceID');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateProductBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_brands');
+        Schema::dropIfExists('tblprice');
     }
 }

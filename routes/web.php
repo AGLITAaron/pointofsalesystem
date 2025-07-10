@@ -4,13 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Setup\SetupController;
 use App\Http\Controllers\Authenticate\LoginController;
 use App\Http\Controllers\Modules\Customers\CustomersContoller;
-use App\Http\Controllers\Modules\Products\ProductController;
 use App\Http\Controllers\Modules\Dashboard\DashboardController;
 use App\Http\Controllers\Modules\Employees\EmployeesController;
-use App\Http\Controllers\Modules\Products\ProductBrandController;
-use App\Http\Controllers\Modules\Products\ProductCategoryController;
 use App\Http\Controllers\Modules\UserAccounts\UserAccountsController;
 use App\Http\Controllers\Modules\Maintenance\Address\AddressController;
+use App\Http\Controllers\Modules\Maintenance\Price\PriceController;
 use App\Http\Controllers\Modules\Maintenance\Roles\UserRolesController;
 
 /*
@@ -46,6 +44,8 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
         function () {
             Route::get('/', [EmployeesController::class, 'index'])->name('employees');
             Route::post('/add-employees', [EmployeesController::class, 'addEmployees'])->name('add-employees-proc');
+            Route::get('/edit-employees/{id}', [EmployeesController::class, 'editEmployees'])->name('edit-employees');
+            Route::post('/edit-employees-proc', [EmployeesController::class, 'editEmployeesProc'])->name('edit-employees-proc');
         }
     );
 
@@ -68,46 +68,28 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
         }
     );
 
-    Route::prefix('roles/')->group(
+    Route::prefix('maintenance/')->group(
         function () {
-            Route::get('/', [UserRolesController::class, 'index'])->name('user-roles');
-            Route::post('/add-role', [UserRolesController::class, 'addRole'])->name('add-role-proc');
-            Route::get('/edit-role/{id}', [UserRolesController::class, 'editRole'])->name('edit-role');
-            Route::post('/edit-role-proc', [UserRolesController::class, 'editRoleProc'])->name('edit-role-proc');
-            Route::get('/delete-role/{id}', [UserRolesController::class, 'deleteRole'])->name('delete-role');
-            Route::post('/delete-role-proc', [UserRolesController::class, 'deleteRoleProc'])->name('delete-role-proc');
-        }
-    );
 
-
-    Route::prefix('products/')->group(
-        function () {
-            Route::prefix('product-list/')->group(
+            Route::prefix('price/')->group(
                 function () {
-                    Route::get('/', [ProductController::class, 'index'])->name('products.list');
-                    Route::get('/create-product', [ProductController::class, 'addProducts'])->name('create-product');
+                    Route::get('/', [PriceController::class, 'index'])->name('price');
+                    Route::post('/add-price-proc', [PriceController::class, 'addPrice'])->name('add-price-proc');
+                    Route::get('/edit-price/{id}', [PriceController::class, 'editPrice'])->name('edit-price');
+                    Route::post('/edit-price-proc', [PriceController::class, 'editPriceProc'])->name('edit-price-proc');
+                    Route::get('/delete-price/{id}', [PriceController::class, 'deletePrice'])->name('delete-price');
+                    Route::post('/delete-price-proc', [PriceController::class, 'deletePriceProc'])->name('delete-price-proc');
                 }
             );
 
-            Route::prefix('product-category/')->group(
+            Route::prefix('roles/')->group(
                 function () {
-                    Route::get('/', [ProductCategoryController::class, 'index'])->name('product-category');
-                    Route::post('/create-product-category', [ProductCategoryController::class, 'addProductCategory'])->name('create-product-category');
-                    Route::get('/edit-product-category/{id}', [ProductCategoryController::class, 'editProductCategory'])->name('edit-product-category');
-                    Route::post('/edit-product-category-proc', [ProductCategoryController::class, 'editProductCategoryProc'])->name('edit-product-category-proc');
-                    Route::get('/delete-product-category/{id}', [ProductCategoryController::class, 'deleteProductCategory'])->name('delete-product-category');
-                    Route::post('/delete-product-category-proc', [ProductCategoryController::class, 'deleteProductCategoryProc'])->name('delete-product-category-proc');
-                }
-            );
-            Route::prefix('product-brand/')->group(
-                function () {
-                    Route::get('/', [ProductBrandController::class, 'index'])->name('product-brand');
-                    Route::post('/create-product-brand', [ProductBrandController::class, 'addProductBrand'])->name('create-product-brand');
-                    Route::get('/edit-product-brand/{id}', [ProductBrandController::class, 'editProductBrand'])->name('edit-product-brand');
-                    Route::post('/edit-product-brand-proc', [ProductBrandController::class, 'editProductBrandProc'])->name('edit-product-brand-proc');
-                    Route::get('/delete-product-brand/{id}', [ProductBrandController::class, 'deleteProductBrand'])->name('delete-product-brand');
-                    Route::post('/delete-product-brand-pro', [ProductBrandController::class, 'deleteProductBrandProc'])->name('delete-product-brand-proc');
-                    // Route::post('/delete-product-brand-proc', [ProductBrandController::class, 'deleteProductBrandProc'])->name('delete-product-brand-proc');
+                    Route::get('/', [UserRolesController::class, 'index'])->name('user-roles');
+                    Route::post('/add-role', [UserRolesController::class, 'addRole'])->name('add-role-proc');
+                    Route::get('/edit-role/{id}', [UserRolesController::class, 'editRole'])->name('edit-role');
+                    Route::post('/edit-role-proc', [UserRolesController::class, 'editRoleProc'])->name('edit-role-proc');
+                    Route::get('/delete-role/{id}', [UserRolesController::class, 'deleteRole'])->name('delete-role');
+                    Route::post('/delete-role-proc', [UserRolesController::class, 'deleteRoleProc'])->name('delete-role-proc');
                 }
             );
         }

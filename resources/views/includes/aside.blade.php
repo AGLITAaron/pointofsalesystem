@@ -124,6 +124,13 @@
         </li>
 
         <li class="menu-item">
+            <a href="{{ route('price') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-menu"></i>
+                <div data-i18n="Tables">Prices</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
             <a href="{{ route('user-roles') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Tables">Users Role & Access</div>

@@ -66,11 +66,6 @@
                                                         data-item-id="{{ $list->EmployeeID }}" data-bs-toggle="modal"
                                                         data-bs-target="#edit-employee-modal"><i class='bx bx-pencil'></i>
                                                     </button>
-
-                                                    <button class="btn btn-outline-danger p-1 delete-employee-btn"
-                                                        data-item-id="{{ $list->EmployeeID }}" data-bs-toggle="modal"
-                                                        data-bs-target="#delete-employee-modal"><i class='bx bx-trash'></i>
-                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -105,13 +100,6 @@
     {{-- edit employee modal --}}
     <div class="modal fade" id="edit-employee-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-content edit-employee-content modal-xl">
-
-        </div>
-    </div>
-
-    {{-- delete employee modal --}}
-    <div class="modal fade" id="delete-employee-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-content delete-modal-content modal-md">
 
         </div>
     </div>
